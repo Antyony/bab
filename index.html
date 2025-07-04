@@ -95,15 +95,21 @@
       }
 
       if (mode === "servings") {
-        const totalRiceWeight = (input * 260) * (100 / 215); // g
+        const totalRiceWeight = (input * 260) * (100 / 215); // 필요한 쌀 양 (g)
         const waterWeight = totalRiceWeight * 1.15;
-        resultDiv.innerText = `쌀: ${totalRiceWeight.toFixed(1)} g, 물: ${waterWeight.toFixed(1)} g`;
+        const sumWeight = totalRiceWeight + waterWeight;
+        resultDiv.innerHTML =
+          `쌀: <b>${totalRiceWeight.toFixed(1)}g</b>, 물: <b>${waterWeight.toFixed(1)}g</b><br>` +
+          `쌀+물 합계: <b>${sumWeight.toFixed(1)}g</b>`;
       } else {
         const riceWeight = input;
         const waterWeight = riceWeight * 1.15;
         const cookedRiceWeight = riceWeight * (215 / 100);
         const servings = cookedRiceWeight / 260;
-        resultDiv.innerText = `물: ${waterWeight.toFixed(1)} g, 약 ${servings.toFixed(1)} 인분 분량`;
+        const sumWeight = riceWeight + waterWeight;
+        resultDiv.innerHTML =
+          `물: <b>${waterWeight.toFixed(1)}g</b>, 약 <b>${servings.toFixed(1)}인분</b><br>` +
+          `쌀+물 합계: <b>${sumWeight.toFixed(1)}g</b>`;
       }
     }
   </script>
